@@ -1,0 +1,217 @@
+:root {
+  color-scheme: light;
+  --bg: #f5f6f8;
+  --card: #ffffff;
+  --ink: #1b1b1f;
+  --muted: #5e6472;
+  --accent: #76d1d8;
+  --accent-strong: #2da0a8;
+  --border: #dfe3e7;
+  font-family: "Segoe UI", system-ui, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+}
+
+.app-header,
+.app-footer {
+  text-align: center;
+  padding: 24px;
+  background: var(--card);
+  border-bottom: 1px solid var(--border);
+}
+
+.app-footer {
+  border-top: 1px solid var(--border);
+  border-bottom: none;
+  font-size: 0.95rem;
+  color: var(--muted);
+}
+
+.app-header h1 {
+  margin: 0 0 8px;
+  font-size: 2rem;
+}
+
+.app-shell {
+  display: grid;
+  grid-template-columns: 360px 1fr;
+  gap: 24px;
+  padding: 24px;
+}
+
+.panel {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.card {
+  background: var(--card);
+  border-radius: 16px;
+  padding: 16px;
+  box-shadow: 0 10px 30px rgba(32, 37, 41, 0.08);
+  border: 1px solid var(--border);
+}
+
+.controls .card h2 {
+  margin-top: 0;
+}
+
+.file-input {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1px dashed var(--border);
+  background: rgba(118, 209, 216, 0.12);
+  cursor: pointer;
+}
+
+.file-input input {
+  display: none;
+}
+
+.page-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+button {
+  border: none;
+  border-radius: 10px;
+  padding: 10px 14px;
+  background: var(--accent);
+  color: var(--ink);
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+button:hover:not(:disabled) {
+  background: var(--accent-strong);
+  color: #fff;
+}
+
+textarea {
+  width: 100%;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  padding: 10px;
+  resize: vertical;
+  font-family: inherit;
+}
+
+.format-preview {
+  margin-top: 12px;
+  background: rgba(118, 209, 216, 0.08);
+  border-radius: 12px;
+  padding: 12px;
+}
+
+.format-preview pre {
+  margin: 0;
+  white-space: pre-wrap;
+  color: var(--muted);
+}
+
+.viewer-card {
+  padding: 0;
+  overflow: hidden;
+}
+
+.viewer-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 18px;
+  border-bottom: 1px solid var(--border);
+  background: rgba(118, 209, 216, 0.12);
+}
+
+.viewer-toolbar .hint {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.canvas-shell {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 16px;
+  min-height: 480px;
+  background: #fefefe;
+}
+
+#pdf-canvas {
+  max-width: 100%;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: #fff;
+}
+
+.selection-rect {
+  position: absolute;
+  border: 2px solid #ff4a4a;
+  background: rgba(255, 74, 74, 0.1);
+  pointer-events: none;
+  display: none;
+}
+
+.table-card h2 {
+  margin-top: 0;
+}
+
+.table-wrapper {
+  max-height: 380px;
+  overflow: auto;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+thead {
+  background: rgba(118, 209, 216, 0.2);
+}
+
+th,
+td {
+  padding: 10px;
+  border-bottom: 1px solid var(--border);
+}
+
+tbody tr:hover {
+  background: rgba(118, 209, 216, 0.12);
+}
+
+tbody tr.selected {
+  background: rgba(118, 209, 216, 0.3);
+}
+
+@media (max-width: 1024px) {
+  .app-shell {
+    grid-template-columns: 1fr;
+  }
+}

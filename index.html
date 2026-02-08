@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ClipperTake — Ekstrakcja tabel z PDF</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.2.67/pdf.min.mjs" type="module"></script>
+  </head>
+  <body>
+    <header class="app-header">
+      <h1>ClipperTake</h1>
+      <p>Otwórz PDF, zaznacz tabelę i zamień cyfry na imiona.</p>
+    </header>
+
+    <main class="app-shell">
+      <section class="panel controls">
+        <div class="card">
+          <h2>PDF</h2>
+          <label class="file-input">
+            <span>Wybierz plik PDF</span>
+            <input id="pdf-input" type="file" accept="application/pdf" />
+          </label>
+          <div class="page-controls">
+            <button id="prev-page" type="button" disabled>◀ Poprzednia</button>
+            <span id="page-indicator">Strona 0 / 0</span>
+            <button id="next-page" type="button" disabled>Następna ▶</button>
+          </div>
+        </div>
+
+        <div class="card">
+          <h2>Lista imion</h2>
+          <p>Wklej listę w formacie: <code>1.Imię Nazwisko</code></p>
+          <textarea id="name-list" rows="8" placeholder="1.Jan Kowalski"></textarea>
+          <button id="load-names" type="button">Zapisz mapę imion</button>
+        </div>
+
+        <div class="card">
+          <h2>Akcje</h2>
+          <button id="extract-table" type="button" disabled>Wyodrębnij tabelę</button>
+          <button id="reset-selection" type="button" disabled>Resetuj zaznaczenie</button>
+          <button id="copy-row" type="button" disabled>Kopiuj zaznaczenie</button>
+          <div class="format-preview">
+            <h3>Podgląd formatu</h3>
+            <pre id="formatted-output">—</pre>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel viewer">
+        <div class="card viewer-card">
+          <div class="viewer-toolbar">
+            <span>Widok PDF</span>
+            <span class="hint">Kliknij i przeciągnij, aby zaznaczyć tabelę.</span>
+          </div>
+          <div class="canvas-shell">
+            <canvas id="pdf-canvas"></canvas>
+            <div id="selection-rect" class="selection-rect"></div>
+          </div>
+        </div>
+
+        <div class="card table-card">
+          <h2>Wynik ekstrakcji</h2>
+          <div class="table-wrapper">
+            <table id="data-table">
+              <thead></thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="app-footer">
+      <p>
+        Wersja przeglądarkowa inspirowana aplikacją desktopową. Wybierz obszar, a następnie
+        dopasuj dane do formatu kopiowanego do schowka.
+      </p>
+    </footer>
+
+    <script type="module" src="app.js"></script>
+  </body>
+</html>
